@@ -3,13 +3,13 @@
 This is a very simple API you can use for learning API Testing. It is built using express and nodejs. It stores data into a JSON File stored under "database" folder with the name "PFMembers.json". There are two endpoints in this api.
 
 1. ### Members - http://localhost:5002/api/members
-  * GET ALL (/) - This will return all the members. You can also use query parameter to filter out based on gender.
-  * GET (/ID) - You can retrieve a specific member based on it's ID.
-  * POST (/) - You can POST a new members into PFMembers.json file.
-  * PUT (/ID) - You can POST an existing member into PFMembers.json file.
-  * DELETE (/ID) - You can DELETE an existing member into PFMembers.json file.
+    * GET ALL (/) - This will return all the members. You can also use query parameter to filter out based on gender.
+    * GET (/ID) - You can retrieve a specific member based on it's ID.
+    * POST (/) - You can POST a new members into PFMembers.json file.
+    * PUT (/ID) - You can POST an existing member into PFMembers.json file.
+    * DELETE (/ID) - You can DELETE an existing member into PFMembers.json file.
 2. ### File Upload - http://localhost:5002/api/upload
-  * POST (/) - You can POST a new FILE into fileuploads folder.
+    * POST (/) - You can POST a new FILE into fileuploads folder.
 3. ### INSTALLATION STEPS
   * Install node.js
   * Install VS Code as IDE
