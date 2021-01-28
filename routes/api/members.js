@@ -24,9 +24,8 @@ router.get('/', (req, res) => {
                 })
             }
         }
-    } else {
-        res.json(members.sort((m1, m2) => m1.id - m2.id))
     }
+    res.json(members.sort((m1, m2) => m1.id - m2.id))
 })
 
 // Get Single Member
