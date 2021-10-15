@@ -18,8 +18,9 @@ app.use(logger)
 const createAccountLimiter = rateLimit({
     windowMs: 10000, // 10 Seconds
     max: 2, // start blocking after 2 requests
-    message:
-        "Too many accounts created from this IP, please try again after 10 Seconds"
+    message: {
+        error: "Too many requests being raised from this IP, please try again after 10 Seconds"
+    }
 });
 
 // STEP 1
