@@ -1,10 +1,5 @@
 [
   {
-    "id": 1,
-    "name": "John Smith",
-    "gender": "Male"
-  },
-  {
     "id": 2,
     "name": "Mike Bax",
     "gender": "Male"
@@ -13,5 +8,10 @@
     "id": 3,
     "name": "Ramona Offerins",
     "gender": "Female"
+  },
+  {
+    "id": 4,
+    "name": "Andy Ballard",
+    "gender": "Male"
   }
 ]

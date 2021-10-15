@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5002
 // Moved to a separate folder
 
 // Init middleware
-// app.use(logger)
+app.use(logger)
 
 // STEP 1
 // app.get('/', (req, res) => {

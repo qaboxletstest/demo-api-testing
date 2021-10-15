@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
     const found = members.some(member => member.id === parseInt(req.params.id))
     if (found) {
         const member = members.filter(member => member.id === parseInt(req.params.id))
-        res.json(member)
+        res.json(member[0])
     } else {
         res.status(404).json({
             msg: `Member with id ${req.params.id} doesn't exist`
@@ -132,7 +132,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     const found = members.some(member => member.id === parseInt(req.params.id))
     if (found) {
-        members.splice(getIndexOfMember(members, req.params.id), 1)
+        members.splice(getIndexOfMember(members, req.params.id) + 1, 1)
         fs.writeFile(filePath, JSON.stringify(members.sort((m1, m2) => m1.id - m2.id), null, 2), err => {
             if (err) {
                 res.status(500).json({
