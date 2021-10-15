@@ -37,7 +37,7 @@ const createAccountLimiter = rateLimit({
 // Init Basic Authentication Middleware
 app.use(simpleAuth)
 
-// XML Middleware
+// XML/JSON Serialization Middleware
 app.use(function (req, res, next) {
     res.sendData = function (obj) {
         if (req.accepts('json')) {
