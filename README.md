@@ -8,6 +8,7 @@ This is a very simple API you can use for learning API Testing. It is built usin
     * POST (/) - You can POST a new members into PFMembers.json file.
     * PUT (/ID) - You can POST an existing member into PFMembers.json file.
     * DELETE (/ID) - You can DELETE an existing member into PFMembers.json file.
+    * Both JSON and XML responses are available.
 2. ### File Upload - http://localhost:5002/api/upload
     * POST (/) - You can POST a new FILE into fileuploads folder.
 3. ### INSTALLATION STEPS
