@@ -16,10 +16,10 @@ app.use(logger)
 
 // Rate-Limit
 const createAccountLimiter = rateLimit({
-    windowMs: 10000, // 10 Seconds
+    windowMs: 20000, // 20 Seconds
     max: 2, // start blocking after 2 requests
     message: {
-        error: "Too many requests being raised from this IP, please try again after 10 Seconds"
+        error: "Too many requests being raised from this IP, please try again after 20 Seconds"
     }
 });
 
