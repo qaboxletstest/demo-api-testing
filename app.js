@@ -67,6 +67,9 @@ app.use('/api/members', createAccountLimiter, require('./routes/api/members'))
 // API File Upload
 app.use('/api/upload', require('./routes/api/fileupload'))
 
+// API Lag Example
+app.use('/api/lag', require('./routes/api/lag'))
+
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`)
 })

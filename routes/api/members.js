@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
             const found = members.some(member => member.gender.toLowerCase() === gn.toLowerCase())
             if (found) {
                 const member = members.filter(member => member.gender.toLowerCase() === gn.toLowerCase())
-                res.sendData(member.sort((m1, m2) => m1.id - m2.id))
+                res.status(200).sendData(member.sort((m1, m2) => m1.id - m2.id))
             } else {
                 res.status(404).sendData({
                     msg: `Member with gender ${gn} doesn't exist`
@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
     const found = members.some(member => member.id === parseInt(req.params.id))
     if (found) {
         const member = members.filter(member => member.id === parseInt(req.params.id))
-        res.sendData(member[0])
+        res.status(200).sendData(member[0])
     } else {
         res.status(404).sendData({
             msg: `Member with id ${req.params.id} doesn't exist`
@@ -113,7 +113,7 @@ router.put('/:id', (req, res) => {
                             msg: `Internal Server Error while writing data to file`
                         })
                     } else {
-                        res.sendData({
+                        res.status(200).sendData({
                             msg: `Member with id ${req.params.id} is updated successfully`,
                             member: member
                         })
@@ -139,7 +139,7 @@ router.delete('/:id', (req, res) => {
                     msg: `Internal Server Error while writing data to file`
                 })
             } else {
-                res.sendData({
+                res.status(200).sendData({
                     msg: `Member with id ${req.params.id} is deleted successfully`,
                     members: members.sort((m1, m2) => m1.id - m2.id)
                 })
