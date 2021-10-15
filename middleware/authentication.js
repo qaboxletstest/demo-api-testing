@@ -7,7 +7,7 @@ const simpleAuth = (req, res, next) => {
         return next()
     }
     res.set('WWW-Authenticate', 'Basic realm="401"')
-    res.status(401).json({ error: 'unauthorized' })
+    res.status(401).sendData({ error: 'unauthorized' })
 }
 
 module.exports = simpleAuth
