@@ -1,22 +1,12 @@
 [
   {
-    "id": 2,
-    "name": "Mike Bax",
-    "gender": "Male"
-  },
-  {
-    "id": 3,
-    "name": "Ramona Offerins",
-    "gender": "Female"
-  },
-  {
-    "id": 4,
-    "name": "Monil",
-    "gender": "Female"
-  },
-  {
-    "id": 5,
+    "id": 1,
     "name": "Adrik",
     "gender": "male"
+  },
+  {
+    "id": 2,
+    "name": "Ramona",
+    "gender": "Female"
   }
 ]
