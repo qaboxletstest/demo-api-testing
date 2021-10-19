@@ -1,13 +1,13 @@
 {
   "name": "demo-api-testing",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sample API for Testing purpose",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app"
   },
   "keywords": [],
-  "author": "QA BOX <qaboxletstest@gmail.com>",
+  "author": "QA BOX LET'S TEST<qaboxletstest@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
