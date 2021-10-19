@@ -165,6 +165,52 @@ router.put('/:id', (req, res) => {
     }
 })
 
+router.patch('/:id', (req, res) => {
+    const found = members.some(member => member.id === parseInt(req.params.id))
+    if (found) {
+        const updmember = req.body
+        if (Object.keys(req.body).length > 2) {
+            return res.status(400).sendData({
+                msg: "Please provide only name and gender"
+            })
+        } else if (updmember.hasOwnProperty('name') && (updmember.name.trim().length < 4 || updmember.name.trim().length > 25)) {
+            return res.status(400).sendData({
+                msg: "Name should be 4 to 25 characters long"
+            })
+        } else if (updmember.hasOwnProperty('gender') && !genders.includes((updmember.gender).toLowerCase())) {
+            return res.status(400).sendData({
+                msg: "Gender should be either male or female only"
+            })
+        } else if (updmember.hasOwnProperty('name') && !re.test(updmember.name)) {
+            return res.status(400).sendData({
+                msg: "Name should only contain Alphabets"
+            })
+        }
+        members.forEach(member => {
+            if (member.id == req.params.id) {
+                member.name = updmember.name ? updmember.name : member.name
+                member.gender = updmember.gender ? updmember.gender : member.gender
+                fs.writeFile(filePath, JSON.stringify(members.sort((m1, m2) => m1.id - m2.id), null, 2), err => {
+                    if (err) {
+                        res.status(500).sendData({
+                            msg: `Internal Server Error while writing data to file`
+                        })
+                    } else {
+                        res.status(200).sendData({
+                            msg: `Member with id ${req.params.id} is updated successfully`,
+                            member: member
+                        })
+                    }
+                })
+            }
+        })
+    } else {
+        res.status(404).sendData({
+            msg: `Member with id ${req.params.id} doesn't exist`
+        })
+    }
+})
+
 // Delete a Member
 router.delete('/:id', (req, res) => {
     const found = members.some(member => member.id === parseInt(req.params.id))
