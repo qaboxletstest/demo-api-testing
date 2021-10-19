@@ -8,7 +8,16 @@ const filePath = path.normalize(__dirname + '..\\..\\..\\database\\PFMembers.jso
 const members = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
 const re = /^[A-Za-z ]+$/;
 
-// Get All Members
+// Routes
+/**
+ * @swagger
+ * /api/members:
+ *  get:
+ *    description: Use to request all members
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ */
 router.get('/', (req, res) => {
     const qr = req.query
     if (qr) {
@@ -28,7 +37,19 @@ router.get('/', (req, res) => {
     res.sendData(members.sort((m1, m2) => m1.id - m2.id))
 })
 
-// Get Single Member
+/**
+ * @swagger
+ * /api/members/{id}:
+ *  get:
+ *    description: Use to request a delayed response
+ *    parameters:
+ *          - in : path
+ *            name : id
+ *            required : true
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ */
 router.get('/:id', (req, res) => {
     const found = members.some(member => member.id === parseInt(req.params.id))
     if (found) {
@@ -41,7 +62,23 @@ router.get('/:id', (req, res) => {
     }
 })
 
-// Post a new Member
+/**
+ * @swagger
+ * /api/member:
+ *    post:
+ *      description: Use to insert a new member
+ *    parameters:
+ *      - name: customer
+ *        in: query
+ *        description: Name of our customer
+ *        required: false
+ *        schema:
+ *          type: string
+ *          format: string
+ *    responses:
+ *      '201':
+ *        description: Successfully created user
+ */
 router.post('/', (req, res) => {
     const newMember = {
         id: members.length === 0 ? 1 : maxIdPlusOne(members),

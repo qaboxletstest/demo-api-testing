@@ -5,16 +5,38 @@ const logger = require('./middleware/logger')
 const fileUpload = require('express-fileupload')
 const rateLimit = require("express-rate-limit");
 const js2xmlparser = require("js2xmlparser");
-
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 
 const app = express()
 const PORT = process.env.PORT || 5002
+
+// Extended: https://swagger.io/specification/#infoObject
+
+const swaggerOptions = {
+    swaggerDefinition: {
+        openapi: '3.0.0',
+        info: {
+            version: "1.0.0",
+            title: "Sample Rest APIs",
+            description: "QA BOX LET'S TEST",
+            contact: {
+                name: "QA BOX LET'S TEST"
+            },
+            servers: [`http://localhost:${PORT}`]
+        }
+    },
+    apis: ['./routes/api/*.js']
+};
 
 // Middleware 
 // Moved to a separate folder
 
 // Init middleware
 app.use(logger)
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Rate-Limit
 const createAccountLimiter = rateLimit({

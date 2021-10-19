@@ -13,6 +13,8 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
     "express-rate-limit": "^5.5.0",
-    "js2xmlparser": "^4.0.1"
+    "js2xmlparser": "^4.0.1",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.1.6"
   }
 }
