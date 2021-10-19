@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
         await util.promisify(file.mv)(dir + URL);
         res.status(201)
 
-        res.json({
+        res.sendData({
             success: true,
             message: "File uploaded successfully!",
             url: `http://localhost:${PORT}/fileuploads/` + fileName,
@@ -34,12 +34,12 @@ router.post("/", async (req, res) => {
     } catch (err) {
         console.log(err);
         if (err === "Unsupported extension!" || err === "File must be less than 5MB") {
-            res.status(400).json({
+            res.status(400).sendData({
                 success: false,
                 message: err,
             });
         } else {
-            res.status(500).json({
+            res.status(500).sendData({
                 success: false,
                 message: err,
             });
