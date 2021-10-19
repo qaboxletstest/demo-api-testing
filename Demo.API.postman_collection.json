@@ -10,6 +10,11 @@
 			"item": [
 				{
 					"name": "Get a Single Member",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
 					"request": {
 						"auth": {
 							"type": "basic",
@@ -29,14 +34,13 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "",
-								"value": "",
-								"type": "text",
-								"disabled": true
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5002/api/members/2",
+							"raw": "http://localhost:5002/api/members/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -45,7 +49,7 @@
 							"path": [
 								"api",
 								"members",
-								"2"
+								"5"
 							]
 						}
 					},
@@ -57,7 +61,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5002/api/members/1",
+							"raw": "http://localhost:5002/api/members/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -66,7 +70,7 @@
 							"path": [
 								"api",
 								"members",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -74,9 +78,21 @@
 				},
 				{
 					"name": "Update a Member",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n        \"name\": \"Monil\",\r\n        \"gender\": \"Female\"\r\n}",
@@ -87,7 +103,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5002/api/members/4",
+							"raw": "http://localhost:5002/api/members/9",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -96,7 +112,7 @@
 							"path": [
 								"api",
 								"members",
-								"4"
+								"9"
 							]
 						}
 					},
@@ -121,10 +137,17 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"name\": \"Adrik\",\r\n        \"gender\":\"male\"\r\n}",
+							"raw": "{\r\n        \"name\": \"Ryan\",\r\n        \"gender\":\"Male\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -148,6 +171,11 @@
 				},
 				{
 					"name": "Get All Female Members",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
 					"request": {
 						"auth": {
 							"type": "basic",
@@ -165,9 +193,16 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"url": {
-							"raw": "http://localhost:5002/api/members?gender=female",
+							"raw": "http://localhost:5002/api/members",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -176,12 +211,6 @@
 							"path": [
 								"api",
 								"members"
-							],
-							"query": [
-								{
-									"key": "gender",
-									"value": "female"
-								}
 							]
 						}
 					},
@@ -189,6 +218,11 @@
 				},
 				{
 					"name": "Get Delayed Response",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
 					"request": {
 						"auth": {
 							"type": "basic",
@@ -206,9 +240,15 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:5002/api/lag?delay=5000",
+							"raw": "http://localhost:5002/api/lag?delay=3000",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -221,8 +261,42 @@
 							"query": [
 								{
 									"key": "delay",
-									"value": "5000"
+									"value": "3000"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Docs",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api-docs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api-docs"
 							]
 						}
 					},
@@ -273,6 +347,47 @@
 							"path": [
 								"api",
 								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download File",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/download?name=Test.jpg",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"download"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Test.jpg"
+								}
 							]
 						}
 					},
