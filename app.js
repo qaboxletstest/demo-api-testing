@@ -89,6 +89,9 @@ app.use('/api/members', createAccountLimiter, require('./routes/api/members'))
 // API File Upload
 app.use('/api/upload', require('./routes/api/fileupload'))
 
+// API File Download
+app.use('/api/download', require('./routes/api/fileDownload'))
+
 // API Lag Example
 app.use('/api/lag', require('./routes/api/lag'))
 
