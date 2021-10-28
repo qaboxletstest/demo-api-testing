@@ -6,7 +6,8 @@ This is a very simple API you can use for learning API Testing. It is built usin
     * GET ALL (/) - This will return all the members. You can also use query parameter to filter out based on gender.
     * GET (/ID) - You can retrieve a specific member based on it's ID.
     * POST (/) - You can POST a new members into PFMembers.json file.
-    * PUT (/ID) - You can POST an existing member into PFMembers.json file.
+    * PUT (/ID) - You can UPDATE an existing member into PFMembers.json file by providing BOTH NAME and GENDER.
+    * PATCH (/ID) - You can UPDATE an existing member into PFMembers.json file by providing either NAME or GENDER or BOTH.
     * DELETE (/ID) - You can DELETE an existing member into PFMembers.json file.
     * Both JSON and XML responses are available.
 2. ### File Upload - http://localhost:5002/api/upload
