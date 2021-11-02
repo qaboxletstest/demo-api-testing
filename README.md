@@ -16,7 +16,9 @@ This is a very simple API you can use for learning API Testing. It is built usin
     * GET (/) - You can download a FILE. e.g. http://localhost:5002/api/download?name=Test.jpg
 4. ### Delayed Response - http://localhost:5002/api/lag?delay=TimeInMilliSeconds
     * Change TimeInMilliSeconds with Appropriate Value e.g. http://localhost:5002/api/lag?delay=3000 would delay the response by 3 Seconds
-5. ### INSTALLATION STEPS
+5. ### Mandatory Header in the Request - http://localhost:5002/api/sendheader
+    * Error if channelName header is not set in the Request Object.
+6. ### INSTALLATION STEPS
       * Install node.js
       * Install VS Code as IDE
       * Install nodemon globally by opening terminal and running the following command : -
