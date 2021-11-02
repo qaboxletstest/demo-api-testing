@@ -66,7 +66,6 @@ app.use(function (req, res, next) {
             res.header('Content-Type', 'application/json');
             res.send(obj);
         } else if (req.accepts('application/xml')) {
-
             res.header('Content-Type', 'application/xml');
             var xml = js2xmlparser.parse("response", obj);
             res.send(xml);
@@ -94,6 +93,9 @@ app.use('/api/download', require('./routes/api/fileDownload'))
 
 // API Lag Example
 app.use('/api/lag', require('./routes/api/lag'))
+
+// Request Header Example
+app.use('/api/sendheader', require('./routes/api/checkHeader'))
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`)
