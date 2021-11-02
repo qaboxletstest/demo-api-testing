@@ -85,13 +85,9 @@ router.post('/', (req, res) => {
         name: req.body.name,
         gender: req.body.gender
     }
-    if (Object.keys(req.body).length > 2) {
+    if (Object.keys(req.body).length != 2 || !newMember.name || !newMember.gender) {
         return res.status(400).sendData({
             msg: "Please provide only name and gender"
-        })
-    } else if (!newMember.name || !newMember.gender) {
-        return res.status(400).sendData({
-            msg: "Please provide a name and gender"
         })
     } else if (newMember.name.trim().length < 4 || newMember.name.trim().length > 25) {
         return res.status(400).sendData({
@@ -123,7 +119,7 @@ router.put('/:id', (req, res) => {
     const found = members.some(member => member.id === parseInt(req.params.id))
     if (found) {
         const updmember = req.body
-        if (Object.keys(req.body).length > 2) {
+        if (Object.keys(req.body).length != 2 || !updmember.hasOwnProperty('name') || !updmember.hasOwnProperty('gender')) {
             return res.status(400).sendData({
                 msg: "Please provide only name and gender"
             })
@@ -169,8 +165,8 @@ router.patch('/:id', (req, res) => {
     const found = members.some(member => member.id === parseInt(req.params.id))
     if (found) {
         const updmember = req.body
-        console.log(updmember)
-        if (Object.keys(req.body).length > 2) {
+        const payloadLength = Object.keys(req.body).length
+        if (payloadLength > 2 || payloadLength === 0) {
             return res.status(400).sendData({
                 msg: "Please provide only name and gender"
             })

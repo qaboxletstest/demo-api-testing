@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "name": "Adrik",
-    "gender": "male"
+    "name": "Monil",
+    "gender": "Female"
   },
   {
     "id": 2,
@@ -12,16 +12,6 @@
   {
     "id": 3,
     "name": "Lion",
-    "gender": "Male"
-  },
-  {
-    "id": 4,
-    "name": "Ryan",
-    "gender": "Male"
-  },
-  {
-    "id": 5,
-    "name": "Ryan",
     "gender": "Male"
   }
 ]

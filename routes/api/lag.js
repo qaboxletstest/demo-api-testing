@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 
-
 /**
  * @swagger
  * /api/lag/{delay}:
@@ -15,7 +14,7 @@ const router = express.Router()
  *      '200':
  *        description: A successful response
  */
-router.get("/:delay", (req, res) => {
+router.get("/", (req, res) => {
     const qr = req.query
     if (qr) {
         if ("delay" in qr) {
