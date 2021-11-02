@@ -30,6 +30,6 @@ This is a very simple API you can use for learning API Testing. It is built usin
          - **npm start**
 6. By default this project runs on PORT 5002; to change it kindly open app.js file and update the following line of code: -
     - **const PORT = process.env.PORT || 5002**
-7. This projct has basic authentication in place. So, the hit the endpoints you have to provide the username and password.
+7. This project has basic authentication in place. So, the hit the endpoints you have to provide the username and password.
     - **username = admin**
     - **password = admin**
