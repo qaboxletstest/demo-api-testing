@@ -16,12 +16,9 @@ const check = (req, res, obj) => {
 function checkContentType(req, res, next) {
     let contentType = req.get('Content-Type');
     let reqMethod = req.method;
-    console.log(reqMethod)
-    console.log(contentType)
     let obj = { error: 'Please send request in application/json content-type format only!!!' };
     if (reqMethod === "POST" || reqMethod === "PUT" || reqMethod === "PATCH") {
         if (contentType === undefined || (contentType != 'application/json' && !(contentType.includes("multipart/form-data")))) {
-
             check(req, res, obj)
         } else {
             next();
