@@ -7,6 +7,8 @@ const rateLimit = require("express-rate-limit");
 const js2xmlparser = require("js2xmlparser");
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
+const customHeaders = require("./middleware/controlRespHeaders")
+const checkContentType = require("./middleware/checkContentType")
 
 const app = express()
 const PORT = process.env.PORT || 5002
@@ -59,6 +61,9 @@ const createAccountLimiter = rateLimit({
 // Init Basic Authentication Middleware
 app.use(simpleAuth)
 
+// Check ContentType Middleware
+app.use(checkContentType)
+
 // XML/JSON Serialization Middleware
 app.use(function (req, res, next) {
     res.sendData = function (obj) {
@@ -81,6 +86,9 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 // app.use(express.text())
 app.use(fileUpload())
+
+// Exclude Headers
+app.use(customHeaders)
 
 // API Members - persistence
 app.use('/api/members', createAccountLimiter, require('./routes/api/members'))
