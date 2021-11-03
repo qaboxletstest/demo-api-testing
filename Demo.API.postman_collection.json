@@ -37,29 +37,13 @@
 								"key": "Accept",
 								"value": "application/xml",
 								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
 							}
 						],
-						"url": {
-							"raw": "http://localhost:5002/api/members/5",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5002",
-							"path": [
-								"api",
-								"members",
-								"5"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete a Member",
-					"request": {
-						"method": "DELETE",
-						"header": [],
 						"url": {
 							"raw": "http://localhost:5002/api/members/3",
 							"protocol": "http",
@@ -77,10 +61,39 @@
 					"response": []
 				},
 				{
-					"name": "Update a Member",
+					"name": "Delete a Member",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5002/api/members/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"members",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Member Via PUT",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {
-							"accept": true
+							"accept": true,
+							"content-type": true
 						}
 					},
 					"request": {
@@ -103,7 +116,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5002/api/members/9",
+							"raw": "http://localhost:5002/api/members/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -112,7 +125,54 @@
 							"path": [
 								"api",
 								"members",
-								"9"
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Member Via PATCH",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Alee\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/members/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"members",
+								"1"
 							]
 						}
 					},
@@ -120,6 +180,11 @@
 				},
 				{
 					"name": "Create a new Member",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
 					"request": {
 						"auth": {
 							"type": "basic",
@@ -141,6 +206,11 @@
 							{
 								"key": "Accept",
 								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
 								"type": "text",
 								"disabled": true
 							}
@@ -199,6 +269,12 @@
 								"value": "application/xml",
 								"type": "text",
 								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
@@ -211,92 +287,6 @@
 							"path": [
 								"api",
 								"members"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Delayed Response",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"accept": true
-						}
-					},
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "admin",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "admin",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/xml",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:5002/api/lag?delay=3000",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5002",
-							"path": [
-								"api",
-								"lag"
-							],
-							"query": [
-								{
-									"key": "delay",
-									"value": "3000"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Docs",
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "admin",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "admin",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:5002/api-docs",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5002",
-							"path": [
-								"api-docs"
 							]
 						}
 					},
@@ -333,7 +323,7 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/C:/Users/gulivi/Desktop/code.png"
+									"src": "/C:/Training/Postman B2/file-upload-app/appfiles/Yey.jpg"
 								}
 							]
 						},
@@ -371,7 +361,14 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"url": {
 							"raw": "http://localhost:5002/api/download?name=Test.jpg",
 							"protocol": "http",
@@ -388,6 +385,207 @@
 									"key": "name",
 									"value": "Test.jpg"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Digest Authentication",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "digest",
+							"digest": [
+								{
+									"key": "password",
+									"value": "secret",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "jack",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "MD5",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:3000/hello?name=World",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"hello"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "World"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Other",
+			"item": [
+				{
+					"name": "Docs",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api-docs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api-docs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Delayed Response",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5002/api/lag?delay=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"lag"
+							],
+							"query": [
+								{
+									"key": "delay",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mandatory Header",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "ChannelName",
+								"value": "qa box lets test",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5002/api/sendheader",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"sendheader"
 							]
 						}
 					},
