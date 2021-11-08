@@ -9,6 +9,7 @@ const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const customHeaders = require("./middleware/controlRespHeaders")
 const checkContentType = require("./middleware/checkContentType")
+const cors = require('cors')
 
 const app = express()
 const PORT = process.env.PORT || 5002
@@ -36,6 +37,9 @@ const swaggerOptions = {
 
 // Init middleware
 app.use(logger)
+
+// Enable CORS
+// app.use(cors())
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));

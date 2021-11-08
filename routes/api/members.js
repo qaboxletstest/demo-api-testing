@@ -22,6 +22,10 @@ const re = /^[A-Za-z ]+$/;
  *    responses:
  *      '200':
  *        description: A successful response
+ *      '401':
+ *        description: Unauthorized response
+ *      '404':
+ *        description: Member with gender "XYZ" doesn't exist response
  */
 router.get('/', (req, res) => {
     const qr = req.query
@@ -50,10 +54,15 @@ router.get('/', (req, res) => {
  *    parameters:
  *          - in : path
  *            name : id
+ *            type : integer
  *            required : true
  *    responses:
  *      '200':
  *        description: A successful response
+ *      '401':
+ *        description: Unauthorized response
+ *      '404':
+ *        description: Member with id "XYZ" doesn't exist response
  */
 router.get('/:id', (req, res) => {
     const found = members.some(member => member.id === parseInt(req.params.id))
@@ -69,20 +78,31 @@ router.get('/:id', (req, res) => {
 
 /**
  * @swagger
- * /api/member:
+ * /api/members:
  *    post:
  *      description: Use to insert a new member
- *    parameters:
- *      - name: customer
- *        in: query
- *        description: Name of our customer
- *        required: false
- *        schema:
- *          type: string
- *          format: string
- *    responses:
- *      '201':
- *        description: Successfully created user
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          name:
+ *                              type: string
+ *                              description: The member's name
+ *                              required: true
+ *                          gender:
+ *                              type: string
+ *                              description: The member's gender
+ *                              required: true
+ *      responses:
+ *          '201':
+ *              description: Successfully created user
+ *          '401':
+ *              description: Unauthorized response
+ *          '400':
+ *              description: Bad Request
  */
 router.post('/', (req, res) => {
     const newMember = {
