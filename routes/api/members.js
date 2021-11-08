@@ -50,7 +50,7 @@ router.get('/', (req, res) => {
  * @swagger
  * /api/members/{id}:
  *  get:
- *    description: Use to request a delayed response
+ *    description: Use to request an existing member
  *    parameters:
  *          - in : path
  *            name : id
@@ -140,6 +140,39 @@ router.post('/', (req, res) => {
 })
 
 // Update a Member
+/**
+ * @swagger
+ * /api/members/{id}:
+ *    put:
+ *      description: Use to update an existing member
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            type: integer
+ *            required: true  
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          name:
+ *                              type: string
+ *                              description: The member's name
+ *                              required: true
+ *                          gender:
+ *                              type: string
+ *                              description: The member's gender
+ *                              required: true
+ *      responses:
+ *          '200':
+ *              description: Successfully updated user
+ *          '401':
+ *              description: Unauthorized response
+ *          '400':
+ *              description: Bad Request
+ */
 router.put('/:id', (req, res) => {
     const found = members.some(member => member.id === parseInt(req.params.id))
     if (found) {
@@ -185,6 +218,42 @@ router.put('/:id', (req, res) => {
         })
     }
 })
+
+// Patch an exisiting Member
+
+/**
+ * @swagger
+ * /api/members/{id}:
+ *    patch:
+ *      description: Use to update an existing member
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            type: integer
+ *            required: true
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          name:
+ *                              type: string
+ *                              description: The member's name
+ *                              required: false
+ *                          gender:
+ *                              type: string
+ *                              description: The member's gender
+ *                              required: false
+ *      responses:
+ *          '200':
+ *              description: Successfully updated user
+ *          '401':
+ *              description: Unauthorized response
+ *          '400':
+ *              description: Bad Request
+ */
 
 router.patch('/:id', (req, res) => {
     const found = members.some(member => member.id === parseInt(req.params.id))
@@ -234,6 +303,24 @@ router.patch('/:id', (req, res) => {
 })
 
 // Delete a Member
+/**
+ * @swagger
+ * /api/members/{id}:
+ *  delete:
+ *    description: Use to delete an existing member
+ *    parameters:
+ *          - in : path
+ *            name : id
+ *            type : integer
+ *            required : true
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ *      '401':
+ *        description: Unauthorized response
+ *      '404':
+ *        description: Member with id "XYZ" doesn't exist response
+ */
 router.delete('/:id', (req, res) => {
     const found = members.some(member => member.id === parseInt(req.params.id))
     if (found) {
