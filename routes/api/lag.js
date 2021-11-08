@@ -3,7 +3,7 @@ const router = express.Router()
 
 /**
  * @swagger
- * /api/lag/{delay}:
+ * /api/lag:
  *  get:
  *    description: Use to request a delayed response
  *    parameters:

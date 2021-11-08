@@ -6,9 +6,17 @@ const router = express.Router()
  * /api/sendheader/:
  *  get:
  *    description: Use to show mandatory header for a request
+ *    parameters:
+ *      -
+ *          name: ChannelName
+ *          in : header
+ *          type: string
+ *          description: Mandatory Header (Pass "qa box lets test" or something)
  *    responses:
  *      '200':
  *        description: A successful response
+ *      '400':
+ *        description: Pass "qa box lets test"
  */
 router.get("/", (req, res) => {
     const header = req.header("ChannelName")

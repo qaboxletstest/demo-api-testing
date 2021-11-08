@@ -14,6 +14,11 @@ const re = /^[A-Za-z ]+$/;
  * /api/members:
  *  get:
  *    description: Use to request all members
+ *    parameters:
+ *      -
+ *          in : query
+ *          name: gender
+ *          required : false
  *    responses:
  *      '200':
  *        description: A successful response
