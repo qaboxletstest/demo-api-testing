@@ -1,6 +1,6 @@
 # demo-api-testing
 
-This is a very simple API you can use for learning API Testing. It is built using express and nodejs. It stores data into a JSON File stored under "database" folder with the name "PFMembers.json". There are two endpoints in this api.
+This is a very simple API you can use for learning API Testing. It is built using express and nodejs. It stores data into a JSON File stored under "database" folder with the name "PFMembers.json". There are five endpoints in this api.
 
 1. ### Members - http://localhost:5002/api/members
     * GET ALL (/) - This will return all the members. You can also use query parameter to filter out based on gender.
