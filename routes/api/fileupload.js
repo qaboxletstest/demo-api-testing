@@ -7,6 +7,7 @@ const fs = require('fs')
 
 router.post("/", async (req, res) => {
     try {
+        let name = req.body.name;
         const file = req.files.file;
         const fileName = file.name;
         const size = file.data.length;
@@ -26,11 +27,15 @@ router.post("/", async (req, res) => {
         await util.promisify(file.mv)(dir + URL);
         res.status(201)
 
-        res.sendData({
-            success: true,
-            message: "File uploaded successfully!",
-            url: `http://localhost:${PORT}/fileuploads/` + fileName,
-        });
+        if (name) {
+            res.sendData({
+                name: name,
+                success: true,
+                message: "File uploaded successfully!",
+                url: `http://localhost:${PORT}/fileuploads/` + fileName,
+            });
+        }
+
     } catch (err) {
         console.log(err);
         if (err === "Unsupported extension!" || err === "File must be less than 5MB") {
