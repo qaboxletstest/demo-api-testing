@@ -34,6 +34,12 @@ router.post("/", async (req, res) => {
                 message: "File uploaded successfully!",
                 url: `http://localhost:${PORT}/fileuploads/` + fileName,
             });
+        } else {
+            res.sendData({
+                success: true,
+                message: "File uploaded successfully!",
+                url: `http://localhost:${PORT}/fileuploads/` + fileName,
+            });
         }
 
     } catch (err) {
