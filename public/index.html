@@ -1,16 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="home.js"></script>
-    <title>Home Page</title>
+    <meta charset="utf-8">
+    <title>Basic JavaScript</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>
 
 <body>
-    <h1 onclick="h1Click()">Home Page</h1>
+    <h1 style="text-align: center;">Contact us on qaboxletstest@gmail.com for queries</h1>
+    <div id="demo">
+        <h2 class='title'>File Upload</h1>
+    </div>
+    <fieldset>
+        <legend>UPLOAD MULTIPART FORM DATA</legend>
+        <table>
+            <tbody>
+                <tr>
+                    <td><label for="Channel Name">Name</label></td>
+                    <td><input type="text" id="name" name="name" placeholder="enter your channel name" /></td>
+                </tr>
+                <tr>
+                    <td><label for="file">Upload a File</label></td>
+                    <td><input type="file" name="file" id="file"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button id="upload">Upload</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <h1 id="message"></h1>
+    </fieldset>
+    <script src="js/myscript.js"></script>
+    <script>
+        $("#upload").on("click", () => {
+            let name = $("#name").val()
+            let file = $('#file')[0].files[0];
+            if (file) {
+                let formData = new FormData();
+                formData.append('file', file);
+                formData.append('name', name);
+                $.ajax({
+                    url: 'http://localhost:5002/api/upload',
+                    type: 'POST',
+                    data: formData,
+                    headers: {
+                        "Authorization": "Basic " + btoa("admin" + ":" + "admin")
+                    },
+                    processData: false,  // tell jQuery not to process the data
+                    contentType: false,  // tell jQuery not to set contentType
+                    success: function (data) {
+                        $("#message").text(data.name)
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $("#message").text(jqXHR)
+                    }
+                });
+            } else {
+                alert("Please attach a file")
+            }
+
+        })
+
+    </script>
 </body>
 
 </html>

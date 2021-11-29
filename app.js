@@ -39,7 +39,7 @@ const swaggerOptions = {
 app.use(logger)
 
 // Enable CORS
-// app.use(cors())
+app.use(cors())
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
