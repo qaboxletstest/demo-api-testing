@@ -7,7 +7,7 @@ const fs = require('fs')
 
 router.post("/", async (req, res) => {
     try {
-        let name = req.body.name;
+        let cname = req.body.name;
         const file = req.files.file;
         const fileName = file.name;
         const size = file.data.length;
@@ -27,9 +27,9 @@ router.post("/", async (req, res) => {
         await util.promisify(file.mv)(dir + URL);
         res.status(201)
 
-        if (name) {
+        if (cname) {
             res.sendData({
-                name: name,
+                name: cname,
                 success: true,
                 message: "File uploaded successfully!",
                 url: `http://localhost:${PORT}/fileuploads/` + fileName,

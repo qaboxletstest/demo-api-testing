@@ -16,36 +16,6 @@
   },
   {
     "id": 4,
-    "name": "Ajay",
-    "gender": "Male"
-  },
-  {
-    "id": 5,
-    "name": "Ryan",
-    "gender": "Male"
-  },
-  {
-    "id": 6,
-    "name": "Julia",
-    "gender": "Female"
-  },
-  {
-    "id": 7,
-    "name": "John",
-    "gender": "Male"
-  },
-  {
-    "id": 8,
-    "name": "Tina",
-    "gender": "Female"
-  },
-  {
-    "id": 9,
-    "name": "Steve",
-    "gender": "Male"
-  },
-  {
-    "id": 10,
     "name": "Steven",
     "gender": "Male"
   }
