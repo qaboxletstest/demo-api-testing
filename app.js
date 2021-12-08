@@ -97,6 +97,9 @@ app.use(customHeaders)
 // API Members - persistence
 app.use('/api/members', createAccountLimiter, require('./routes/api/members'))
 
+// API Authors - persistence
+app.use('/api/authors', createAccountLimiter, require('./routes/api/authors'))
+
 // API File Upload
 app.use('/api/upload', require('./routes/api/fileupload'))
 

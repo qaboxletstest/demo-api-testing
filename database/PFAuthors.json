@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Monil",
+    "age": 34,
+    "gender": "Female",
+    "books": [
+      {
+        "bid": 101,
+        "name": "Manual Testing",
+        "pages": 30
+      },
+      {
+        "bid": 102,
+        "name": "Automation Testing",
+        "pages": 50
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "John",
+    "age": 42,
+    "gender": "Male",
+    "books": [
+      {
+        "bid": 103,
+        "name": "Rest API",
+        "pages": 40
+      },
+      {
+        "bid": 104,
+        "name": "Cypress Tutorial",
+        "pages": 80
+      }
+    ]
+  }
+]
