@@ -6,7 +6,8 @@
             "type": "Car",
             "weight": 1200,
             "color": "Black",
-            "tyres": 4
+            "tyres": 4,
+            "publicTransport": false
         },
         {
             "id": 2,
@@ -21,7 +22,8 @@
             "type": "Bike",
             "weight": 200,
             "color": "Red",
-            "tyres": 2
+            "tyres": 2,
+            "publicTransport": false
         },
         {
             "id": 4,
