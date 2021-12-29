@@ -8,14 +8,9 @@ const vehicles = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
 // Routes
 /**
  * @swagger
- * /api/authors:
+ * /api/vehicles:
  *  get:
  *    description: Use to request all vehicles
- *    parameters:
- *      -
- *          in : query
- *          name: gender
- *          required : false
  *    responses:
  *      '200':
  *        description: A successful response
