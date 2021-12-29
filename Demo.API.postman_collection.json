@@ -12,6 +12,56 @@
 					"name": "Get a Single Member",
 					"event": [
 						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log(pm.response)\r",
+									"\r",
+									"let schema = {\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"id\": {\r",
+									"      \"type\": \"integer\",\r",
+									"      \"multipleOf\": 1,\r",
+									"      \"minimum\": 1\r",
+									"    },\r",
+									"    \"name\": {\r",
+									"      \"type\": \"string\",\r",
+									"      \"minLength\": 4,\r",
+									"      \"maxLength\": 25,\r",
+									"      \"pattern\": \"^[a-zA-Z ]*$\"\r",
+									"    },\r",
+									"    \"gender\": {\r",
+									"      \"type\": \"string\",\r",
+									"      \"pattern\": \"^([Ff]e)?[Mm]ale$\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"additionalProperties\": false,\r",
+									"  \"required\": [\r",
+									"    \"id\",\r",
+									"    \"name\",\r",
+									"    \"gender\"\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"let resBody = {\r",
+									"    \"id\": 3,\r",
+									"    \"name\": \"Lion\",\r",
+									"    \"gender\": \"Male\"\r",
+									"}\r",
+									"\r",
+									"// pm.test('Schema is valid', function () {\r",
+									"//     pm.response.to.have.jsonSchema(schema)\r",
+									"// });\r",
+									"\r",
+									"pm.test('Response Body is valid', function () {\r",
+									"    pm.expect(pm.response.json()).to.deep.equal(resBody)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
 							"listen": "prerequest",
 							"script": {
 								"exec": [
@@ -19,7 +69,61 @@
 								],
 								"type": "text/javascript"
 							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
 						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5002/api/members/40",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"members",
+								"40"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single Author",
+					"event": [
 						{
 							"listen": "test",
 							"script": {
@@ -63,9 +167,18 @@
 									"//     pm.response.to.have.jsonSchema(schema)\r",
 									"// });\r",
 									"\r",
-									"// pm.test('Response Body is valid', function () {\r",
-									"//     pm.expect(pm.response.json()).to.deep.equal(resBody)\r",
-									"// });"
+									"pm.test('Response Body is valid', function () {\r",
+									"    pm.expect(pm.response.json()).to.deep.equal(resBody)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// console.log(pm.request)"
 								],
 								"type": "text/javascript"
 							}
@@ -106,7 +219,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5002/api/members/3",
+							"raw": "http://localhost:5002/api/authors/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -114,8 +227,8 @@
 							"port": "5002",
 							"path": [
 								"api",
-								"members",
-								"3"
+								"authors",
+								"2"
 							]
 						}
 					},
@@ -134,7 +247,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5002/api/members/4",
+							"raw": "http://localhost:5002/api/members/40",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -143,7 +256,7 @@
 							"path": [
 								"api",
 								"members",
-								"4"
+								"40"
 							]
 						}
 					},
@@ -297,7 +410,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"name\": \"Ryan\",\r\n        \"gender\":\"Male\"\r\n}",
+							"raw": "{\r\n        \"id\":0,\r\n        \"name\": \"Ryan\",\r\n        \"gender\":\"Male\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -358,7 +471,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5002/api/members?gender=female",
+							"raw": "http://localhost:5002/api/members",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -367,14 +480,70 @@
 							"path": [
 								"api",
 								"members"
-							],
-							"query": [
-								{
-									"key": "gender",
-									"value": "female"
-								}
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Female Authors",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5002/api/authors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Vehicles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
 					},
 					"response": []
 				}
@@ -413,6 +582,11 @@
 									"key": "file",
 									"type": "file",
 									"src": "/C:/Training/Postman B2/file-upload-app/appfiles/Yey.jpg"
+								},
+								{
+									"key": "name",
+									"value": "QA BOX LET'S TEST",
+									"type": "text"
 								}
 							]
 						},
@@ -604,7 +778,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5002/api/lag?delay=4000",
+							"raw": "http://localhost:5002/api/lag?delay=2000",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -617,7 +791,7 @@
 							"query": [
 								{
 									"key": "delay",
-									"value": "4000"
+									"value": "2000"
 								}
 							]
 						}

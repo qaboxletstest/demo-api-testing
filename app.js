@@ -103,6 +103,9 @@ app.use('/api/authors', createAccountLimiter, require('./routes/api/authors'))
 // API File Upload
 app.use('/api/upload', require('./routes/api/fileupload'))
 
+// API Vehicles
+app.use('/api/vehicles', require('./routes/api/vehicles'))
+
 // API File Download
 app.use('/api/download', require('./routes/api/fileDownload'))
 

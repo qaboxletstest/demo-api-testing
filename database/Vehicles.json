@@ -1,0 +1,35 @@
+{
+    "count": 4,
+    "vehicles": [
+        {
+            "id": 1,
+            "type": "Car",
+            "weight": 1200,
+            "color": "Black",
+            "tyres": 4
+        },
+        {
+            "id": 2,
+            "type": "Bus",
+            "weight": 10000,
+            "color": "Yellow",
+            "tyres": 6,
+            "publicTransport": true
+        },
+        {
+            "id": 3,
+            "type": "Bike",
+            "weight": 200,
+            "color": "Red",
+            "tyres": 2
+        },
+        {
+            "id": 4,
+            "type": "Private Jet",
+            "weight": 120000,
+            "color": "White",
+            "tyres": 0,
+            "publicTransport": false
+        }
+    ]
+}
