@@ -34,5 +34,23 @@
         "pages": 80
       }
     ]
+  },
+  {
+    "id": 3,
+    "name": "Ajay",
+    "age": 35,
+    "gender": "Male",
+    "books": [
+      {
+        "bid": 105,
+        "name": "GraphQL",
+        "pages": 60
+      },
+      {
+        "bid": 106,
+        "name": "API Gateway",
+        "pages": 20
+      }
+    ]
   }
 ]
