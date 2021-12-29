@@ -1,6 +1,6 @@
 # demo-api-testing
 
-This is a very simple API you can use for learning API Testing. It is built using express and nodejs. It stores data into a JSON File stored under "database" folder with the name "PFMembers.json". There are five endpoints in this api.
+This is a very simple API you can use for learning API Testing. It is built using express and nodejs. It stores data into a JSON File stored under "database" folder with the name "PFMembers.json". There are seven endpoints in this api.
 
 1. ### Members - http://localhost:5002/api/members
     * GET ALL (/) - This will return all the members. You can also use query parameter to filter out based on gender.
@@ -18,7 +18,11 @@ This is a very simple API you can use for learning API Testing. It is built usin
     * Change TimeInMilliSeconds with Appropriate Value e.g. http://localhost:5002/api/lag?delay=3000 would delay the response by 3 Seconds
 5. ### Mandatory Header in the Request - http://localhost:5002/api/sendheader
     * Error if channelName header is not set in the Request Object.
-6. ### INSTALLATION STEPS
+6. ### Vehicles - http://localhost:5002/api/vehicles
+    * GET ALL (/) - This will return all the vehicles. 
+7. ### Authors - http://localhost:5002/api/authors
+    * GET ALL (/) - This will return all the authors. 
+8. ### INSTALLATION STEPS
       * Install node.js
       * Install VS Code as IDE
       * Install nodemon globally by opening terminal and running the following command : -
@@ -28,8 +32,8 @@ This is a very simple API you can use for learning API Testing. It is built usin
          - **npm install**
       * To start the project type the following command in the integrated terminal of VS Code: -
          - **npm start**
-6. By default this project runs on PORT 5002; to change it kindly open app.js file and update the following line of code: -
+9. By default this project runs on PORT 5002; to change it kindly open app.js file and update the following line of code: -
     - **const PORT = process.env.PORT || 5002**
-7. This project has basic authentication in place. So, the hit the endpoints you have to provide the username and password.
+10. This project has basic authentication in place. So, the hit the endpoints you have to provide the username and password.
     - **username = admin**
     - **password = admin**
