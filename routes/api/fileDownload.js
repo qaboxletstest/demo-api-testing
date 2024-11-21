@@ -9,7 +9,7 @@ router.get('/', function (req, res) {
     if (qr) {
         if ("name" in qr) {
             const fileInput = qr.name
-            const file = path.normalize(__dirname + `..\\..\\..\\filedownload\\${fileInput}`)
+            const file = path.normalize(__dirname + `../../../filedownload/${fileInput}`)
             console.log(file)
             const filename = path.basename(file);
             const mimetype = mime.getType(file);

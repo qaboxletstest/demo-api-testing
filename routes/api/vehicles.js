@@ -2,7 +2,7 @@ const express = require('express')
 const fs = require('fs')
 const router = express.Router()
 const path = require('path')
-const filePath = path.normalize(__dirname + '..\\..\\..\\database\\Vehicles.json')
+const filePath = path.normalize(__dirname + '../../../database/Vehicles.json')
 const vehicles = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
 
 // Routes

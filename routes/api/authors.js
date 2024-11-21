@@ -4,7 +4,7 @@ const router = express.Router()
 const { maxIdPlusOne, getIndexOfMember } = require('../../helpers/arrayManipulate')
 const genders = ["male", "female"]
 const path = require('path')
-const filePath = path.normalize(__dirname + '..\\..\\..\\database\\PFAuthors.json')
+const filePath = path.normalize(__dirname + '../../../database/PFAuthors.json')
 const authors = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
 const re = /^[A-Za-z ]+$/;
 

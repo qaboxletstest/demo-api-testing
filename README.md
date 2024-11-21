@@ -37,3 +37,23 @@ This is a very simple API you can use for learning API Testing. It is built usin
 10. This project has basic authentication in place. So, the hit the endpoints you have to provide the username and password.
     - **username = admin**
     - **password = admin**
+
+11. ### Build and run app in container
+    * Build the image
+      ```bash
+      docker build -t localhost/demo-api-testing:latest .
+      ```
+    * Build multi-arch image (advanced)
+      ```bash
+      docker buildx build --platform linux/amd64,linux/arm64/v8,linux/arm/v7 -t localhost/demo-api-testing:latest .
+      ```
+    * Run the container
+      ```bash
+      docker run --rm --name demo-api-testing -p 5002:5002 localhost/demo-api-testing:latest
+      ```
+    * Access the app
+      - **http://localhost:5002/api/members**
+    * Stop the container
+      ```bash
+      docker stop demo-api-testing
+      ```
